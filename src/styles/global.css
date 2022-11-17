@@ -4,5 +4,12 @@
 
 body {
   background-color: #071422;
+  font-family: 'Nunito', sans-serif;
  -webkit-font-smoothing: antialiased;
+}
+
+
+body, input, textarea, {
+  font-family: 'Nunito', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
