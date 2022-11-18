@@ -5,14 +5,21 @@ import {
   GithubLogo,
   Link,
 } from 'phosphor-react'
+import { useNavigate } from 'react-router-dom'
 
 export function PostComplete() {
+  const navigate = useNavigate()
+
+  function goBack() {
+    navigate(-1)
+  }
+
   return (
     <div className="w-full">
       <header className="max-w-[54rem] w-full mx-auto mt-[-5rem] flex items-center gap-8 bg-baseProfile py-8 pl-10 pr-8 rounded-lg">
         <div className="w-full">
           <div className="flex justify-between items-center">
-            <a className="text-xs text-blue" href="/">
+            <a className="text-xs text-blue" onClick={goBack}>
               <span className="flex items-center gap-1 font-bold">
                 <CaretLeft size={18} />
                 VOLTAR

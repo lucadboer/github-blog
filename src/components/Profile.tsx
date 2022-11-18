@@ -1,6 +1,6 @@
 import { GithubLogo, Link, Users } from 'phosphor-react'
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface UserTypes {
   name: string
@@ -12,14 +12,16 @@ interface UserTypes {
 export function Profile() {
   const [user, setUser] = useState({} as UserTypes)
 
+  useEffect(() => {
+    getDataGithub()
+  }, [])
+
   async function getDataGithub() {
     const response = await axios.get('https://api.github.com/users/lucadboer')
     const data = response.data
 
     setUser(data)
   }
-
-  getDataGithub()
 
   return (
     <div>
@@ -29,7 +31,7 @@ export function Profile() {
           src="https://github.com/lucadboer.png"
           alt="imagem de perfil do github"
         />
-        <div>
+        <div className="w-full">
           <strong className="text-baseTitle flex justify-between items-center text-2xl">
             {user.name}
             <a
