@@ -1,7 +1,9 @@
+import { PostComplete } from '../components/PostComplete'
+
 export function PostPage() {
   return (
-    <div>
-      <h1>Post</h1>
+    <div className="w-full">
+      <PostComplete />
     </div>
   )
 }

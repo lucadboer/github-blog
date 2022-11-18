@@ -4,9 +4,8 @@ import { useState } from 'react'
 
 interface UserTypes {
   name: string
-  link: string
-  description: string
-  user: string
+  bio: string
+  login: string
   followers: number
 }
 
@@ -16,12 +15,8 @@ export function Profile() {
   async function getDataGithub() {
     const response = await axios.get('https://api.github.com/users/lucadboer')
     const data = response.data
-    console.log(data)
 
-    user.name = data.name
-    user.description = data.bio
-    user.followers = data.followers
-    user.user = data.login
+    setUser(data)
   }
 
   getDataGithub()
@@ -47,11 +42,11 @@ export function Profile() {
               </span>
             </a>
           </strong>
-          <p className="text-baseText mt-2">{user.description}</p>
+          <p className="text-baseText mt-2">{user.bio}</p>
           <footer className="mt-6 flex items-center gap-6 text-baseSubtitle">
             <span className="flex items-center gap-1">
               <GithubLogo size={18} />
-              {user.user}
+              {user.login}
             </span>
             <span className="flex items-center gap-1">
               <Users size={18} />
