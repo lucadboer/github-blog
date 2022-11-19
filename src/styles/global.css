@@ -2,11 +2,15 @@
 @tailwind utilities;
 @tailwind components;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #071422;
   font-family: 'Nunito', sans-serif;
- -webkit-font-smoothing: antialiased;
- line-height: 160%;
+  -webkit-font-smoothing: antialiased;
+  line-height: 160%;
 }
 
 
@@ -14,3 +18,13 @@ body, input, textarea, {
   font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
+p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+

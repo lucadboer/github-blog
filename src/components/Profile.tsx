@@ -47,11 +47,11 @@ export function Profile() {
           <p className="text-baseText mt-2">{user.bio}</p>
           <footer className="mt-6 flex items-center gap-6 text-baseSubtitle">
             <span className="flex items-center gap-1">
-              <GithubLogo size={18} />
+              <GithubLogo weight="fill" size={18} />
               {user.login}
             </span>
             <span className="flex items-center gap-1">
-              <Users size={18} />
+              <Users weight="fill" size={18} />
               {user.followers} seguidores
             </span>
           </footer>

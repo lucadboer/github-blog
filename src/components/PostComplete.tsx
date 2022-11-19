@@ -15,21 +15,23 @@ export function PostComplete() {
   }
 
   return (
-    <div className="w-full">
-      <header className="max-w-[54rem] w-full mx-auto mt-[-5rem] flex items-center gap-8 bg-baseProfile py-8 pl-10 pr-8 rounded-lg">
+    <div>
+      <header className="max-w-[54rem] w-full mx-auto mt-[-5rem] flex items-center gap-8 bg-baseProfile relative py-8 pl-10 pr-8 rounded-lg">
         <div className="w-full">
           <div className="flex justify-between items-center">
-            <a className="text-xs text-blue" onClick={goBack}>
-              <span className="flex items-center gap-1 font-bold">
-                <CaretLeft size={18} />
-                VOLTAR
-              </span>
+            <a
+              className="text-xs text-blue flex items-center gap-1 font-bold cursor-pointer transition-all duration-300 hover:underline underline-offset-4"
+              onClick={goBack}
+            >
+              <CaretLeft size={18} />
+              VOLTAR
             </a>
-            <a className="text-xs text-blue" href="/">
-              <span className="flex items-center gap-1 font-bold">
-                <Link size={18} />
-                Ver no GitHub
-              </span>
+            <a
+              className="text-xs text-blue flex items-center gap-1 font-bold"
+              href="/"
+            >
+              <Link size={18} />
+              Ver no GitHub
             </a>
           </div>
           <strong className="mt-5 text-baseTitle flex justify-between items-center text-2xl">
