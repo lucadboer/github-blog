@@ -1,28 +1,46 @@
-import { useState } from 'react'
-// import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-export function SearchForm() {
-  const [query, setQuery] = useState('')
+const searchFormSchema = z.object({
+  query: z.string(),
+})
 
-  // const { register, handleSubmit } = useForm()
+type SearchFormInputs = z.infer<typeof searchFormSchema>
 
-  function handleSearchPost(event: any) {
-    setQuery(event.target.value)
-    console.log(query)
+interface SearchFormProps {
+  postsLenght: number
+  getPosts: (query?: string) => Promise<void>
+}
+
+export function SearchForm({ getPosts, postsLenght }: SearchFormProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<SearchFormInputs>({
+    resolver: zodResolver(searchFormSchema),
+  })
+
+  async function handleSearchPost(data: SearchFormInputs) {
+    if (data.query) {
+      await getPosts(data.query)
+    } else {
+      await getPosts()
+    }
   }
 
   return (
     <div className="max-w-[54rem] w-full mx-auto mt-16 flex flex-col justify-center gap-3">
       <div className="flex justify-between items-center ">
         <strong className="text-baseSubtitle text-lg">Publicações</strong>
-        <span className="text-baseSpan">6 publicações</span>
+        <span className="text-baseSpan"> {postsLenght} publicações</span>
       </div>
-      <form onChange={handleSearchPost}>
+      <form onSubmit={handleSubmit(handleSearchPost)}>
         <input
           className="w-full py-3 px-4 text-baseText bg-baseInput border border-baseBorder rounded-md placeholder:text-baseLabel focus-within:outline-none shadow-sm shadow-blue"
           placeholder="Buscar Conteúdo"
-          value={query}
-          required
+          {...register('query')}
         />
       </form>
     </div>

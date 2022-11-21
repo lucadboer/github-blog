@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { PostsTypes } from '../pages/BlogPage'
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
 
 interface PostProps {
   post: PostsTypes
@@ -15,7 +17,12 @@ export function Post({ post }: PostProps) {
         <h3 className="text-baseTitle text-xl flex-1 font-bold">
           {post.title}
         </h3>
-        <span className="text-baseSpan text-sm">{post.created_at}</span>
+        <span className="text-baseSpan text-sm first-letter:uppercase">
+          {formatDistanceToNow(new Date(post.created_at), {
+            addSuffix: true,
+            locale: ptBR,
+          })}
+        </span>
       </header>
       <main className="mt-5">
         <p className="text-baseText">{post.body}</p>
