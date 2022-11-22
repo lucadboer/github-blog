@@ -1,5 +1,6 @@
-import { formatDistanceToNow } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
+import ReactMarkdown from 'react-markdown'
+import ReactDom from 'react-dom'
+
 import {
   Calendar,
   CaretLeft,
@@ -21,7 +22,12 @@ export function PostComplete({ postData }: PostCompleteProps) {
     navigate(-1)
   }
 
-  console.log(postData.user.login)
+  const markdown = postData.body
+
+  // const body = ReactDom.render(
+  //   <ReactMarkdown />,
+  //   document.body,
+  // )
 
   return (
     <div>
@@ -53,10 +59,7 @@ export function PostComplete({ postData }: PostCompleteProps) {
             </span>
             <span className="flex items-center gap-1">
               <Calendar size={18} />
-              {formatDistanceToNow(new Date(postData.created_at), {
-                addSuffix: true,
-                locale: ptBR,
-              })}
+              {postData.created_at}
             </span>
             <span className="flex items-center gap-1">
               <ChatCircle weight="fill" size={18} />
@@ -67,7 +70,9 @@ export function PostComplete({ postData }: PostCompleteProps) {
       </header>
 
       <main className="max-w-[54rem] w-full mx-auto py-10 px-8">
-        <p className="text-baseText text-justify">{postData.body}</p>
+        <p className="text-baseText text-justify flex flex-col gap-4">
+          <ReactMarkdown children={postData.body} />
+        </p>
       </main>
     </div>
   )

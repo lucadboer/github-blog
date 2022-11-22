@@ -26,7 +26,9 @@ export function Post({ post }: PostProps) {
         </span>
       </header>
       <main className="mt-5">
-        <p className="text-baseText">{post.body}</p>
+        <p id="p" className="text-baseText">
+          {post.body}
+        </p>
       </main>
     </Link>
   )
