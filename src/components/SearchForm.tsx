@@ -14,11 +14,7 @@ interface SearchFormProps {
 }
 
 export function SearchForm({ getPosts, postsLenght }: SearchFormProps) {
-  const {
-    register,
-    handleSubmit,
-    formState: { isSubmitting },
-  } = useForm<SearchFormInputs>({
+  const { register, handleSubmit } = useForm<SearchFormInputs>({
     resolver: zodResolver(searchFormSchema),
   })
 

@@ -1,3 +1,5 @@
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 import {
   Calendar,
   CaretLeft,
@@ -6,13 +8,20 @@ import {
   Link,
 } from 'phosphor-react'
 import { useNavigate } from 'react-router-dom'
+import { PostsTypes } from '../pages/BlogPage'
 
-export function PostComplete() {
+interface PostCompleteProps {
+  postData: PostsTypes
+}
+
+export function PostComplete({ postData }: PostCompleteProps) {
   const navigate = useNavigate()
 
   function goBack() {
     navigate(-1)
   }
+
+  console.log(postData.user.login)
 
   return (
     <div>
@@ -28,43 +37,37 @@ export function PostComplete() {
             </a>
             <a
               className="text-xs text-blue flex items-center gap-1 font-bold"
-              href="/"
+              href={postData.html_url}
             >
               <Link size={18} />
               Ver no GitHub
             </a>
           </div>
           <strong className="mt-5 text-baseTitle flex justify-between items-center text-2xl">
-            JavaScript data types and data structures
+            {postData.title}
           </strong>
           <footer className="mt-6 flex items-center gap-6 text-baseSpan text-md">
             <span className="flex items-center gap-1">
               <GithubLogo size={18} />
-              login
+              lucadboer
             </span>
             <span className="flex items-center gap-1">
               <Calendar size={18} />
-              Há um dia
+              {formatDistanceToNow(new Date(postData.created_at), {
+                addSuffix: true,
+                locale: ptBR,
+              })}
             </span>
             <span className="flex items-center gap-1">
-              <ChatCircle weight="fill" size={18} />5 Comentários
+              <ChatCircle weight="fill" size={18} />
+              {postData.comments} Comentários
             </span>
           </footer>
         </div>
       </header>
 
       <main className="max-w-[54rem] w-full mx-auto py-10 px-8">
-        <p className="text-baseText text-justify">
-          Programming languages all have built-in data structures, but these
-          often differ from one language to another. This article attempts to
-          list the built-in data structures available in JavaScript and what
-          properties they have. These can be used to build other data
-          structures. Wherever possible, comparisons with other languages are
-          drawn. Dynamic typing JavaScript is a loosely typed and dynamic
-          language. Variables in JavaScript are not directly associated with any
-          particular value type, and any variable can be assigned (and
-          re-assigned) values of all types:
-        </p>
+        <p className="text-baseText text-justify">{postData.body}</p>
       </main>
     </div>
   )

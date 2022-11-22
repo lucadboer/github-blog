@@ -8,9 +8,10 @@ interface PostProps {
 }
 
 export function Post({ post }: PostProps) {
+  const postParams = `/post/${post.number}`
   return (
     <Link
-      to="/post"
+      to={postParams}
       className="max-h-[16.25rem] w-full overflow-hidden text-ellipsis bg-basePost rounded-md p-8 border-2 border-basePost cursor-pointer transition-all duration-300 hover:border-baseSpan"
     >
       <header className="flex items-center gap-4">
