@@ -49,6 +49,8 @@ export function Profile() {
                 <a
                   className="text-xs text-blue h-[31px]"
                   href="https://github.com/lucadboer"
+                  target={'_blank'}
+                  rel="noreferrer"
                 >
                   <span className="flex items-center gap-1">
                     GITHUB

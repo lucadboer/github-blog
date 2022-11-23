@@ -43,7 +43,9 @@ export function PostComplete({ postData }: PostCompleteProps) {
             </a>
             <a
               className="text-xs text-blue flex items-center gap-1 font-bold"
+              target={'_blank'}
               href={postData.html_url}
+              rel="noreferrer"
             >
               <Link size={18} />
               Ver no GitHub
@@ -70,7 +72,7 @@ export function PostComplete({ postData }: PostCompleteProps) {
       </header>
 
       <main className="max-w-[54rem] w-full mx-auto py-10 px-8">
-        <p className="text-baseText text-justify flex flex-col gap-4">
+        <p className="text-baseText text-justify flex flex-col gap-4 list-disc">
           <ReactMarkdown
             // eslint-disable-next-line react/no-children-prop
             children={postData.body}
