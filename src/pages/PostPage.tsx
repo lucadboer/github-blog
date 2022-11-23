@@ -40,7 +40,7 @@ export function PostPage() {
         <Spinner />
       ) : (
         <>
-          <PostComplete postData={completedPost} />
+          <PostComplete postData={completedPost as any} />
         </>
       )}
     </div>

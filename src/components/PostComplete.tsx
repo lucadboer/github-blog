@@ -17,6 +17,7 @@ import {
   GithubLogo,
   Link,
 } from 'phosphor-react'
+
 interface PostCompleteProps {
   postData: PostsTypes
 }
