@@ -1,7 +1,7 @@
 # GitHub Blog
 
-![preview1](./.github/preview1.png)
-![preview2](./.github/preview2.png)
+![preview1](./.github/preview2.png)
+![preview2](./.github/preview1.png)
 
 
 > Trilha Ignite
