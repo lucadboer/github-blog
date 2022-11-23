@@ -31,7 +31,7 @@ export function PostComplete({ postData }: PostCompleteProps) {
 
   return (
     <div className="animate__animated animate__fadeIn">
-      <header className="max-w-[54rem] w-full mx-auto mt-[-5rem] flex items-center gap-8 bg-baseProfile relative py-8 pl-10 pr-8 rounded-lg">
+      <header className="max-w-[54rem] w-full mx-auto mt-[-5rem] flex items-center gap-8 bg-baseProfile relative py-8 pl-10 pr-8 rounded-lg max-md:p-2">
         <div className="w-full">
           <div className="flex justify-between items-center">
             <a
