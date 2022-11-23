@@ -24,7 +24,6 @@ export function PostPage() {
       )
       const data = await response.data
       setCompletedPost(data)
-      console.log(data)
     } finally {
       setIsLoading(false)
     }
