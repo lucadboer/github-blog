@@ -1,5 +1,14 @@
+import { useNavigate } from 'react-router-dom'
+
 import ReactMarkdown from 'react-markdown'
-import ReactDom from 'react-dom'
+import remarkGfm from 'remark-gfm'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+
+import { PostsTypes } from '../pages/BlogPage'
+import { dateFormatter } from '../utils/formatter'
+
+import '../styles/postComplete.css'
 
 import {
   Calendar,
@@ -8,9 +17,6 @@ import {
   GithubLogo,
   Link,
 } from 'phosphor-react'
-import { useNavigate } from 'react-router-dom'
-import { PostsTypes } from '../pages/BlogPage'
-
 interface PostCompleteProps {
   postData: PostsTypes
 }
@@ -22,15 +28,8 @@ export function PostComplete({ postData }: PostCompleteProps) {
     navigate(-1)
   }
 
-  const markdown = postData.body
-
-  // const body = ReactDom.render(
-  //   <ReactMarkdown />,
-  //   document.body,
-  // )
-
   return (
-    <div>
+    <div className="animate__animated animate__fadeIn">
       <header className="max-w-[54rem] w-full mx-auto mt-[-5rem] flex items-center gap-8 bg-baseProfile relative py-8 pl-10 pr-8 rounded-lg">
         <div className="w-full">
           <div className="flex justify-between items-center">
@@ -59,7 +58,7 @@ export function PostComplete({ postData }: PostCompleteProps) {
             </span>
             <span className="flex items-center gap-1">
               <Calendar size={18} />
-              {postData.created_at}
+              {dateFormatter(postData.created_at)}
             </span>
             <span className="flex items-center gap-1">
               <ChatCircle weight="fill" size={18} />
@@ -71,7 +70,30 @@ export function PostComplete({ postData }: PostCompleteProps) {
 
       <main className="max-w-[54rem] w-full mx-auto py-10 px-8">
         <p className="text-baseText text-justify flex flex-col gap-4">
-          <ReactMarkdown children={postData.body} />
+          <ReactMarkdown
+            // eslint-disable-next-line react/no-children-prop
+            children={postData.body}
+            components={{
+              code({ node, inline, className, children, ...props }) {
+                const match = /language-(\w+)/.exec(className || '')
+                return !inline && match ? (
+                  <SyntaxHighlighter
+                    // eslint-disable-next-line react/no-children-prop
+                    children={String(children).replace(/\n$/, '')}
+                    style={dracula as any}
+                    language={match[1]}
+                    PreTag="div"
+                    {...props}
+                  />
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                )
+              },
+            }}
+            remarkPlugins={[remarkGfm]}
+          />
         </p>
       </main>
     </div>

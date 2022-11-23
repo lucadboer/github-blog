@@ -27,7 +27,7 @@ export function SearchForm({ getPosts, postsLenght }: SearchFormProps) {
   }
 
   return (
-    <div className="max-w-[54rem] w-full mx-auto mt-16 flex flex-col justify-center gap-3">
+    <div className="max-w-[54rem] w-full mx-auto mt-16 flex flex-col justify-center gap-3 animate__animated animate__fadeIn">
       <div className="flex justify-between items-center ">
         <strong className="text-baseSubtitle text-lg">Publicações</strong>
         <span className="text-baseSpan"> {postsLenght} publicações</span>

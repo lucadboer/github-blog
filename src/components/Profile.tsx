@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react'
+
 import { GithubLogo, Link, Users } from 'phosphor-react'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+
 import { LoadingProfile } from './Loadings/LoadingProfile'
 
 interface UserTypes {
@@ -30,7 +32,7 @@ export function Profile() {
   }
 
   return (
-    <div>
+    <div className="animate__animated animate__fadeIn">
       <header className="max-w-[54rem] w-full mx-auto mt-[-5rem] flex items-center gap-8 bg-baseProfile py-8 pl-10 pr-8 rounded-lg">
         {isLoading ? (
           <LoadingProfile />

@@ -1,8 +1,11 @@
-import { PostComplete } from '../components/PostComplete'
 import { useParams } from 'react-router-dom'
-import { PostsTypes } from './BlogPage'
 import { useCallback, useEffect, useState } from 'react'
+
 import axios from 'axios'
+
+import { Spinner } from '../components/Spinner'
+import { PostComplete } from '../components/PostComplete'
+import { PostsTypes } from './BlogPage'
 
 interface PostData {
   Post: PostsTypes
@@ -32,8 +35,14 @@ export function PostPage() {
   }, [])
 
   return (
-    <div className="w-full">
-      <PostComplete postData={completedPost} />
+    <div className="w-full flex justify-center ic">
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          <PostComplete postData={completedPost} />
+        </>
+      )}
     </div>
   )
 }

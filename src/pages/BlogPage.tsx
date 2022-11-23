@@ -1,5 +1,7 @@
-import axios from 'axios'
 import { useCallback, useEffect, useState } from 'react'
+
+import axios from 'axios'
+
 import { LoadingPosts } from '../components/Loadings/LoadingPosts'
 import { Post } from '../components/Post'
 import { Profile } from '../components/Profile'
