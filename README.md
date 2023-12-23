@@ -3,10 +3,7 @@
 ![preview1](./.github/preview2.png)
 ![preview2](./.github/preview1.png)
 
-
-> Trilha Ignite
-
-Terceiro desafio desenvolvido na trilha Ignite da Rocketseat com ReactJS, Tailwind, TypeScript e Axios. O objetivo foi criar um blog que utiliza os dados do meu perfil de usuário e também das issues deste projeto, onde cada issue tem uma publicação separada.
+O objetivo foi criar um blog que utiliza os dados do meu perfil de usuário do GitHub e também das issues deste projeto, onde cada issue tem uma publicação separada.
 
 Além de todos os fundamentos do React, foi utilizado o axios para manipular chamadas HTTP, principalmente para buscar as informações através das API's do GitHub, também conceitos avançados de rotas do React Router Dom. Para a estilização foi aplicado os recursos do TailwindCSS
 
